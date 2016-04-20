@@ -1,29 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% @posts.each do |post| %>
+    <div class="post-preview">
+      <%content = raw("<h2 class='post-title'> #{post.title} </h2> <h3 class='post-subtitle'> #{post.body} </h3>")%>
+      <%= link_to content, post %>
+      <p class="post-meta">Posted by <a href="#">Admin</a>  at <%= post.created_at%></p>
+    </div>
+    <hr>
+  <% end %>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+  <!-- Pager -->
+  <ul class="pager">
+      <li class="next">
+          <% np_arrow = raw("New Post &rarr;") %>
+          <%= link_to np_arrow, new_post_path %>
+      </li>
+  </ul>
 
-<%= link_to 'New Post', new_post_path %>
+</div>
