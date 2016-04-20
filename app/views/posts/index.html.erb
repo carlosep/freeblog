@@ -1,41 +1,37 @@
 <!-- Page Header -->
 <!-- Set your background image for this header on the line below. -->
 <header class="intro-header" style="background-image: url('../img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Clean Blog</h1>
-                    <hr class="small">
-                    <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h1>Free Blog</h1>
+          <hr class="small">
+          <span class="subheading">Testing how it goes with a free hosting and domain</span>
         </div>
+      </div>
     </div>
+  </div>
 </header>
 
 <p id="notice"><%= notice %></p>
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
       <% @posts.each do |post| %>
         <div class="post-preview">
-          <%content = raw("<h2 class='post-title'> #{post.title} </h2> <h3 class='post-subtitle'> #{post.body} </h3>")%>
+          <%content = raw("<h2 class='post-title'> #{strip_tags(post.title)} </h2> <h3 class='post-subtitle'> #{strip_tags(post.body)} </h3>")%>
           <%= link_to content, post %>
           <p class="post-meta">Posted by <a href="#">Admin</a>  on <%= post.created_at%></p>
         </div>
         <hr>
       <% end %>
-
-      <!-- Pager -->
       <ul class="pager">
-          <li class="next">
-              <% np_arrow = raw("New Post &rarr;") %>
-              <%= link_to np_arrow, new_post_path %>
-          </li>
+        <li class="next">
+          <% np_arrow = raw("New Post +") %>
+          <%= link_to np_arrow, new_post_path %>
+        </li>
       </ul>
-
     </div>
-  <div>
-<div>
+  </div>
+</div>
